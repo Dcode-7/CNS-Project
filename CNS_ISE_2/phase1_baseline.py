@@ -20,7 +20,7 @@ class ECCKeyManager:
     
     @staticmethod
     def generate_keypair(save_path=None):
-        """Generate ECC keypair using Curve25519"""
+        """Generate ECC keypair using SECP256R1s"""
         private_key = ec.generate_private_key(ec.SECP256R1())
         public_key = private_key.public_key()
         
@@ -184,92 +184,131 @@ class BaselineBenchmark:
 
 
 def main():
-    """Main demonstration of Phase 1"""
-    print("=" * 60)
-    print("PHASE 1: Baseline ECC + LSB Steganography")
-    print("=" * 60)
-    
-    # Setup
+    """Phase 1: ECC + LSB Steganography (Detailed flow with full metrics)"""
+    print("=" * 70)
+    print("PHASE 1: Baseline ECC + LSB Steganography (Full Metrics & Message Flow)")
+    print("=" * 70)
+
+    # Setup directories
     os.makedirs("keys", exist_ok=True)
-    os.makedirs("output", exist_ok=True)
-    
-    # 1. Generate Keys
-    print("\n[1] Generating ECC keypairs...")
-    start_time = time.time()
-    sender_priv, sender_pub = ECCKeyManager.generate_keypair("keys/sender")
-    receiver_priv, receiver_pub = ECCKeyManager.generate_keypair("keys/receiver")
-    print(f"✓ Keys generated in {(time.time() - start_time)*1000:.2f}ms")
-    
-    # 2. Prepare Message
-    message = "This is a secret message for Phase 1 baseline testing!"
-    print(f"\n[2] Original message: {message}")
-    print(f"    Message hash: {BaselineBenchmark.hash_data(message)[:16]}...")
-    
-    # 3. Encryption
-    print("\n[3] Encrypting message...")
-    mem_before = BaselineBenchmark.measure_memory()
-    start_time = time.time()
-    
-    # Derive shared key
-    shared_key = ECCCrypto.derive_shared_key(sender_priv, receiver_pub)
-    encrypted_msg = ECCCrypto.encrypt_message(message, shared_key)
-    
-    encrypt_time = (time.time() - start_time) * 1000
-    print(f"✓ Encrypted in {encrypt_time:.2f}ms")
-    print(f"    Ciphertext size: {len(encrypted_msg)} bytes")
-    
-    # 4. Embedding
-    print("\n[4] Embedding into image...")
-    # Create a test image if none exists
-    if not os.path.exists("test_image.png"):
-        test_img = np.random.randint(0, 256, (512, 512, 3), dtype=np.uint8)
-        Image.fromarray(test_img).save("test_image.png")
-        print("    ℹ Created test image (512x512)")
-    
-    start_time = time.time()
-    LSBSteganography.embed_data("test_image.png", encrypted_msg, "output/stego_phase1.png")
-    embed_time = (time.time() - start_time) * 1000
-    mem_after = BaselineBenchmark.measure_memory()
-    
-    print(f"✓ Embedded in {embed_time:.2f}ms")
-    print(f"    Memory used: {mem_after - mem_before:.2f}MB")
-    
-    # 5. Extraction and Decryption
-    print("\n[5] Extracting and decrypting...")
-    start_time = time.time()
-    
-    extracted_data = LSBSteganography.extract_data("output/stego_phase1.png")
-    receiver_shared_key = ECCCrypto.derive_shared_key(receiver_priv, sender_pub)
-    decrypted_msg = ECCCrypto.decrypt_message(extracted_data, receiver_shared_key)
-    
-    decode_time = (time.time() - start_time) * 1000
-    
-    print(f"✓ Decoded in {decode_time:.2f}ms")
-    print(f"    Decrypted message: {decrypted_msg}")
-    
-    # 6. Validation
-    print("\n[6] Validation:")
-    original_hash = BaselineBenchmark.hash_data(message)
-    decoded_hash = BaselineBenchmark.hash_data(decrypted_msg)
-    
-    if original_hash == decoded_hash:
-        print(f"✓ PASS: Message integrity verified")
-        print(f"    Hash match: {original_hash[:16]}...")
-    else:
-        print(f"✗ FAIL: Hash mismatch!")
-    
-    # 7. Summary
-    print("\n" + "=" * 60)
-    print("PHASE 1 BENCHMARK SUMMARY")
-    print("=" * 60)
-    print(f"Encryption time:  {encrypt_time:.2f}ms")
-    print(f"Embedding time:   {embed_time:.2f}ms")
-    print(f"Decoding time:    {decode_time:.2f}ms")
-    print(f"Total time:       {encrypt_time + embed_time + decode_time:.2f}ms")
-    print(f"Memory footprint: {mem_after - mem_before:.2f}MB")
-    print(f"Message size:     {len(message)} bytes")
-    print(f"Payload size:     {len(encrypted_msg)} bytes")
-    print("=" * 60)
+    os.makedirs("stego_img", exist_ok=True)
+    os.makedirs("dataset", exist_ok=True)
+
+    image_dir = os.path.join("dataset", "images")
+    image_files = [f for f in os.listdir(image_dir) if f.lower().endswith(('.png', '.jpg', '.jpeg'))]
+
+    if not image_files:
+        print("⚠️ No images found in dataset/. Add images and rerun.")
+        return
+    print(f"Found {len(image_files)} image(s) in dataset folder.\n")
+
+    # Message to embed
+    message = "This is a secret message for Phase 1 dataset testing!"
+    msg_size = len(message.encode())
+    print(f"[INFO] Using message: {message}")
+    print(f"       Message size: {msg_size} bytes")
+    print(f"       Message hash: {BaselineBenchmark.hash_data(message)[:16]}...\n")
+
+    # Metrics accumulators
+    total_encrypt = total_embed = total_decode = total_time = 0.0
+    total_mem = 0.0
+    total_msg_size = total_payload = 0
+
+    for idx, image_name in enumerate(image_files[:5], start=1):  # process first 5 for demo
+        print("=" * 60)
+        print(f"[{idx}/{len(image_files)}] Processing image: {image_name}")
+        print("=" * 60)
+
+        image_path = os.path.join(image_dir, image_name)
+        output_path = os.path.join("stego_img", f"stego_{image_name.split('.')[0]}.png")
+
+        # 1️⃣ Generate ECC keys
+        start_time = time.time()
+        sender_priv, sender_pub = ECCKeyManager.generate_keypair(f"keys/sender_{idx}")
+        receiver_priv, receiver_pub = ECCKeyManager.generate_keypair(f"keys/receiver_{idx}")
+        key_time = (time.time() - start_time) * 1000
+        print(f"✓ ECC keypairs generated in {key_time:.2f}ms")
+
+        # 2️⃣ Encrypt message
+        print("\n[Encrypting message...]")
+        print(f"Original message: {message}")
+        mem_before = BaselineBenchmark.measure_memory()
+        start_time = time.time()
+        shared_key = ECCCrypto.derive_shared_key(sender_priv, receiver_pub)
+        encrypted_msg = ECCCrypto.encrypt_message(message, shared_key)
+        encrypt_time = (time.time() - start_time) * 1000
+        mem_after = BaselineBenchmark.measure_memory()
+        payload_size = len(encrypted_msg)
+        print(f"Encrypted message (first 80 chars): {encrypted_msg[:80]}")
+        print(f"✓ Encrypted in {encrypt_time:.2f}ms | Payload size: {payload_size} bytes")
+
+        # 3️⃣ Embed ciphertext in image
+        print("\n[Embedding data in image...]")
+        start_time = time.time()
+        try:
+            LSBSteganography.embed_data(image_path, encrypted_msg, output_path)
+            embed_time = (time.time() - start_time) * 1000
+            print(f"✓ Embedded successfully in {embed_time:.2f}ms → {output_path}")
+        except Exception as e:
+            print(f"✗ Embedding failed for {image_name}: {e}")
+            continue
+
+        # 4️⃣ Extract and decrypt
+        print("\n[Extracting and decrypting data...]")
+        start_time = time.time()
+        extracted_data = LSBSteganography.extract_data(output_path)
+        print(f"Extracted message (first 80 chars): {extracted_data[:80]}")
+        receiver_shared_key = ECCCrypto.derive_shared_key(receiver_priv, sender_pub)
+        decrypted_msg = ECCCrypto.decrypt_message(extracted_data, receiver_shared_key)
+        decode_time = (time.time() - start_time) * 1000
+        print(f"Decrypted message: {decrypted_msg}")
+        print(f"✓ Decrypted in {decode_time:.2f}ms")
+
+        # 5️⃣ Verify integrity
+        total_processing_time = key_time + encrypt_time + embed_time + decode_time
+        mem_used = mem_after - mem_before
+        if BaselineBenchmark.hash_data(message) == BaselineBenchmark.hash_data(decrypted_msg):
+            print("✅ PASS: Message integrity verified.")
+        else:
+            print("⚠️ FAIL: Message hash mismatch!")
+
+        # 6️⃣ Per-image summary
+        print("-" * 60)
+        print(f"Encryption time:    {encrypt_time:.2f}ms")
+        print(f"Embedding time:     {embed_time:.2f}ms")
+        print(f"Decoding time:      {decode_time:.2f}ms")
+        print(f"Total processing:   {total_processing_time:.2f}ms")
+        print(f"Memory used:        {mem_used:.2f}MB")
+        print(f"Message size:       {msg_size} bytes")
+        print(f"Payload size:       {payload_size} bytes")
+        print(f"Stego image saved:  {output_path}")
+        print("-" * 60 + "\n")
+
+        # accumulate metrics
+        total_encrypt += encrypt_time
+        total_embed += embed_time
+        total_decode += decode_time
+        total_mem += mem_used
+        total_time += total_processing_time
+        total_msg_size += msg_size
+        total_payload += payload_size
+
+    # ✅ Final summary
+    n = len(image_files[:5])
+    print("\n" + "=" * 70)
+    print("PHASE 1 BENCHMARK SUMMARY (All Dataset Images)")
+    print("=" * 70)
+    print(f"Total images processed: {n}")
+    print(f"Avg Encryption time:   {total_encrypt/n:.2f}ms")
+    print(f"Avg Embedding time:    {total_embed/n:.2f}ms")
+    print(f"Avg Decoding time:     {total_decode/n:.2f}ms")
+    print(f"Avg Total time:        {total_time/n:.2f}ms per image")
+    print(f"Avg Memory footprint:  {total_mem/n:.2f}MB")
+    print(f"Avg Message size:      {total_msg_size/n:.2f} bytes")
+    print(f"Avg Payload size:      {total_payload/n:.2f} bytes")
+    print("=" * 70)
+
+
 
 
 if __name__ == "__main__":

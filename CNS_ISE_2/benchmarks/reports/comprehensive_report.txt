@@ -1,0 +1,88 @@
+================================================================================
+COMPREHENSIVE BENCHMARK REPORT
+Lightweight ECC-Based Steganography Validation
+Generated: 2025-10-17 16:01:37
+================================================================================
+
+TEST CONFIGURATION
+--------------------------------------------------------------------------------
+Phase 1 Tests: 50
+Phase 2 Tests: 50
+Image Size: 512x512 pixels
+Image Format: PNG (lossless)
+
+TIME METRICS (milliseconds)
+--------------------------------------------------------------------------------
+Metric                                      Phase 1         Phase 2  Improvement
+--------------------------------------------------------------------------------
+Total Encoding Time                         13.316         14.542        -9.2%
+Key Generation                               0.069          0.060       +13.0%
+Key Exchange (ECDH)                          0.121          0.105       +13.5%
+Encryption (AES-GCM)                         0.045          0.018       +59.4%
+Payload Mapping                              0.100          0.013       +87.2%
+LSB Embedding                               13.077          0.282       +97.8%
+I/O Write                                    0.000         11.860          N/A
+Total Decoding Time                          2.970          2.919        +1.7%
+Data Extraction                              2.785          0.196       +93.0%
+Decryption                                   0.183          0.197        -7.5%
+
+MEMORY METRICS (MB)
+--------------------------------------------------------------------------------
+Metric                                      Phase 1         Phase 2  Improvement
+--------------------------------------------------------------------------------
+Peak Memory (Encode)                         0.015          1.643    -10797.4%
+Peak Memory (Decode)                        71.111         73.483        -3.3%
+
+IMAGE QUALITY METRICS
+--------------------------------------------------------------------------------
+Metric                                      Phase 1         Phase 2  Improvement
+--------------------------------------------------------------------------------
+PSNR (dB)                                   82.015         80.504        +1.8%
+SSIM                                         1.000          1.000        +0.0%
+MSE                                          0.000          0.001       -37.8%
+
+CAPACITY METRICS
+--------------------------------------------------------------------------------
+Metric                                      Phase 1         Phase 2  Improvement
+--------------------------------------------------------------------------------
+Payload Size (bytes)                        82.300        119.300       -45.0%
+Overhead (bytes)                            28.000         65.000      -132.1%
+Bits per Pixel                               0.003          0.004       -45.0%
+Efficiency Ratio                             0.623          0.428       +31.2%
+
+ALGORITHMIC METRICS
+--------------------------------------------------------------------------------
+Metric                                      Phase 1         Phase 2  Improvement
+--------------------------------------------------------------------------------
+Modular Inversions                           2.000          0.000      +100.0%
+ECC Point Operations                         1.000          1.000        +0.0%
+
+================================================================================
+KEY FINDINGS
+================================================================================
+
+1. Encoding Speed Improvement: -9.2%
+   Phase 1: 13.32 ± 13.60 ms
+   Phase 2: 14.54 ± 9.76 ms
+
+2. Memory Efficiency Improvement: -10797.4%
+   Phase 1: 0.02 ± 0.11 MB
+   Phase 2: 1.64 ± 0.51 MB
+
+3. Image Quality (PSNR):
+   Phase 1: 82.02 dB
+   Phase 2: 80.50 dB
+   (>50 dB indicates imperceptible changes)
+
+================================================================================
+LIGHTWEIGHT VALIDATION STATUS
+================================================================================
+
+✓ PASS: Encoding Time < 100ms
+✓ PASS: Memory < 50MB
+✗ FAIL: Speed Improvement ≥ 30%
+✗ FAIL: Memory Improvement ≥ 25%
+✓ PASS: PSNR > 50 dB
+✓ PASS: SSIM > 0.99
+
+OVERALL: ✗ FURTHER OPTIMIZATION NEEDED

@@ -1,0 +1,1 @@
+A longer message 32 containing more data to test the capacity and performance of our steganography system more thoroughly.

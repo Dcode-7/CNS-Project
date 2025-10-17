@@ -1,0 +1,1 @@
+This is a medium-length test message number 11 for cryptography research.

@@ -1,0 +1,563 @@
+{
+  "type": "synthetic",
+  "num_images": 50,
+  "image_size": [
+    512,
+    512
+  ],
+  "created": "2025-10-17T07:17:44.241451",
+  "images": [
+    {
+      "filename": "synthetic_0000.png",
+      "pattern": "gradient",
+      "index": 0,
+      "hash": "3602cd83ee7a547c"
+    },
+    {
+      "filename": "synthetic_0001.png",
+      "pattern": "noise",
+      "index": 1,
+      "hash": "ccf3832d319c3b1d"
+    },
+    {
+      "filename": "synthetic_0002.png",
+      "pattern": "checkerboard",
+      "index": 2,
+      "hash": "45f411103ca0b7f9"
+    },
+    {
+      "filename": "synthetic_0003.png",
+      "pattern": "circles",
+      "index": 3,
+      "hash": "d0409a3c9d54ca96"
+    },
+    {
+      "filename": "synthetic_0004.png",
+      "pattern": "waves",
+      "index": 4,
+      "hash": "026ab2b0701e98ca"
+    },
+    {
+      "filename": "synthetic_0005.png",
+      "pattern": "gradient",
+      "index": 5,
+      "hash": "3602cd83ee7a547c"
+    },
+    {
+      "filename": "synthetic_0006.png",
+      "pattern": "noise",
+      "index": 6,
+      "hash": "d4b63d980d78d460"
+    },
+    {
+      "filename": "synthetic_0007.png",
+      "pattern": "checkerboard",
+      "index": 7,
+      "hash": "45f411103ca0b7f9"
+    },
+    {
+      "filename": "synthetic_0008.png",
+      "pattern": "circles",
+      "index": 8,
+      "hash": "d0409a3c9d54ca96"
+    },
+    {
+      "filename": "synthetic_0009.png",
+      "pattern": "waves",
+      "index": 9,
+      "hash": "026ab2b0701e98ca"
+    },
+    {
+      "filename": "synthetic_0010.png",
+      "pattern": "gradient",
+      "index": 10,
+      "hash": "3602cd83ee7a547c"
+    },
+    {
+      "filename": "synthetic_0011.png",
+      "pattern": "noise",
+      "index": 11,
+      "hash": "18e049030d46df36"
+    },
+    {
+      "filename": "synthetic_0012.png",
+      "pattern": "checkerboard",
+      "index": 12,
+      "hash": "45f411103ca0b7f9"
+    },
+    {
+      "filename": "synthetic_0013.png",
+      "pattern": "circles",
+      "index": 13,
+      "hash": "d0409a3c9d54ca96"
+    },
+    {
+      "filename": "synthetic_0014.png",
+      "pattern": "waves",
+      "index": 14,
+      "hash": "026ab2b0701e98ca"
+    },
+    {
+      "filename": "synthetic_0015.png",
+      "pattern": "gradient",
+      "index": 15,
+      "hash": "3602cd83ee7a547c"
+    },
+    {
+      "filename": "synthetic_0016.png",
+      "pattern": "noise",
+      "index": 16,
+      "hash": "f4bf1ff160ed18a2"
+    },
+    {
+      "filename": "synthetic_0017.png",
+      "pattern": "checkerboard",
+      "index": 17,
+      "hash": "45f411103ca0b7f9"
+    },
+    {
+      "filename": "synthetic_0018.png",
+      "pattern": "circles",
+      "index": 18,
+      "hash": "d0409a3c9d54ca96"
+    },
+    {
+      "filename": "synthetic_0019.png",
+      "pattern": "waves",
+      "index": 19,
+      "hash": "026ab2b0701e98ca"
+    },
+    {
+      "filename": "synthetic_0020.png",
+      "pattern": "gradient",
+      "index": 20,
+      "hash": "3602cd83ee7a547c"
+    },
+    {
+      "filename": "synthetic_0021.png",
+      "pattern": "noise",
+      "index": 21,
+      "hash": "62af1dbc15f64f8c"
+    },
+    {
+      "filename": "synthetic_0022.png",
+      "pattern": "checkerboard",
+      "index": 22,
+      "hash": "45f411103ca0b7f9"
+    },
+    {
+      "filename": "synthetic_0023.png",
+      "pattern": "circles",
+      "index": 23,
+      "hash": "d0409a3c9d54ca96"
+    },
+    {
+      "filename": "synthetic_0024.png",
+      "pattern": "waves",
+      "index": 24,
+      "hash": "026ab2b0701e98ca"
+    },
+    {
+      "filename": "synthetic_0025.png",
+      "pattern": "gradient",
+      "index": 25,
+      "hash": "3602cd83ee7a547c"
+    },
+    {
+      "filename": "synthetic_0026.png",
+      "pattern": "noise",
+      "index": 26,
+      "hash": "5de739323708ff4f"
+    },
+    {
+      "filename": "synthetic_0027.png",
+      "pattern": "checkerboard",
+      "index": 27,
+      "hash": "45f411103ca0b7f9"
+    },
+    {
+      "filename": "synthetic_0028.png",
+      "pattern": "circles",
+      "index": 28,
+      "hash": "d0409a3c9d54ca96"
+    },
+    {
+      "filename": "synthetic_0029.png",
+      "pattern": "waves",
+      "index": 29,
+      "hash": "026ab2b0701e98ca"
+    },
+    {
+      "filename": "synthetic_0030.png",
+      "pattern": "gradient",
+      "index": 30,
+      "hash": "3602cd83ee7a547c"
+    },
+    {
+      "filename": "synthetic_0031.png",
+      "pattern": "noise",
+      "index": 31,
+      "hash": "cf1ddd904e2c5a7e"
+    },
+    {
+      "filename": "synthetic_0032.png",
+      "pattern": "checkerboard",
+      "index": 32,
+      "hash": "45f411103ca0b7f9"
+    },
+    {
+      "filename": "synthetic_0033.png",
+      "pattern": "circles",
+      "index": 33,
+      "hash": "d0409a3c9d54ca96"
+    },
+    {
+      "filename": "synthetic_0034.png",
+      "pattern": "waves",
+      "index": 34,
+      "hash": "026ab2b0701e98ca"
+    },
+    {
+      "filename": "synthetic_0035.png",
+      "pattern": "gradient",
+      "index": 35,
+      "hash": "3602cd83ee7a547c"
+    },
+    {
+      "filename": "synthetic_0036.png",
+      "pattern": "noise",
+      "index": 36,
+      "hash": "20401f8783821dff"
+    },
+    {
+      "filename": "synthetic_0037.png",
+      "pattern": "checkerboard",
+      "index": 37,
+      "hash": "45f411103ca0b7f9"
+    },
+    {
+      "filename": "synthetic_0038.png",
+      "pattern": "circles",
+      "index": 38,
+      "hash": "d0409a3c9d54ca96"
+    },
+    {
+      "filename": "synthetic_0039.png",
+      "pattern": "waves",
+      "index": 39,
+      "hash": "026ab2b0701e98ca"
+    },
+    {
+      "filename": "synthetic_0040.png",
+      "pattern": "gradient",
+      "index": 40,
+      "hash": "3602cd83ee7a547c"
+    },
+    {
+      "filename": "synthetic_0041.png",
+      "pattern": "noise",
+      "index": 41,
+      "hash": "673f671565ae9177"
+    },
+    {
+      "filename": "synthetic_0042.png",
+      "pattern": "checkerboard",
+      "index": 42,
+      "hash": "45f411103ca0b7f9"
+    },
+    {
+      "filename": "synthetic_0043.png",
+      "pattern": "circles",
+      "index": 43,
+      "hash": "d0409a3c9d54ca96"
+    },
+    {
+      "filename": "synthetic_0044.png",
+      "pattern": "waves",
+      "index": 44,
+      "hash": "026ab2b0701e98ca"
+    },
+    {
+      "filename": "synthetic_0045.png",
+      "pattern": "gradient",
+      "index": 45,
+      "hash": "3602cd83ee7a547c"
+    },
+    {
+      "filename": "synthetic_0046.png",
+      "pattern": "noise",
+      "index": 46,
+      "hash": "1aa84748453ad714"
+    },
+    {
+      "filename": "synthetic_0047.png",
+      "pattern": "checkerboard",
+      "index": 47,
+      "hash": "45f411103ca0b7f9"
+    },
+    {
+      "filename": "synthetic_0048.png",
+      "pattern": "circles",
+      "index": 48,
+      "hash": "d0409a3c9d54ca96"
+    },
+    {
+      "filename": "synthetic_0049.png",
+      "pattern": "waves",
+      "index": 49,
+      "hash": "026ab2b0701e98ca"
+    }
+  ],
+  "texts": [
+    {
+      "filename": "message_0000.txt",
+      "length": 16,
+      "index": 0
+    },
+    {
+      "filename": "message_0001.txt",
+      "length": 72,
+      "index": 1
+    },
+    {
+      "filename": "message_0002.txt",
+      "length": 121,
+      "index": 2
+    },
+    {
+      "filename": "message_0003.txt",
+      "length": 37,
+      "index": 3
+    },
+    {
+      "filename": "message_0004.txt",
+      "length": 24,
+      "index": 4
+    },
+    {
+      "filename": "message_0005.txt",
+      "length": 52,
+      "index": 5
+    },
+    {
+      "filename": "message_0006.txt",
+      "length": 53,
+      "index": 6
+    },
+    {
+      "filename": "message_0007.txt",
+      "length": 53,
+      "index": 7
+    },
+    {
+      "filename": "message_0008.txt",
+      "length": 65,
+      "index": 8
+    },
+    {
+      "filename": "message_0009.txt",
+      "length": 42,
+      "index": 9
+    },
+    {
+      "filename": "message_0010.txt",
+      "length": 17,
+      "index": 10
+    },
+    {
+      "filename": "message_0011.txt",
+      "length": 73,
+      "index": 11
+    },
+    {
+      "filename": "message_0012.txt",
+      "length": 122,
+      "index": 12
+    },
+    {
+      "filename": "message_0013.txt",
+      "length": 38,
+      "index": 13
+    },
+    {
+      "filename": "message_0014.txt",
+      "length": 25,
+      "index": 14
+    },
+    {
+      "filename": "message_0015.txt",
+      "length": 53,
+      "index": 15
+    },
+    {
+      "filename": "message_0016.txt",
+      "length": 54,
+      "index": 16
+    },
+    {
+      "filename": "message_0017.txt",
+      "length": 54,
+      "index": 17
+    },
+    {
+      "filename": "message_0018.txt",
+      "length": 66,
+      "index": 18
+    },
+    {
+      "filename": "message_0019.txt",
+      "length": 43,
+      "index": 19
+    },
+    {
+      "filename": "message_0020.txt",
+      "length": 17,
+      "index": 20
+    },
+    {
+      "filename": "message_0021.txt",
+      "length": 73,
+      "index": 21
+    },
+    {
+      "filename": "message_0022.txt",
+      "length": 122,
+      "index": 22
+    },
+    {
+      "filename": "message_0023.txt",
+      "length": 38,
+      "index": 23
+    },
+    {
+      "filename": "message_0024.txt",
+      "length": 25,
+      "index": 24
+    },
+    {
+      "filename": "message_0025.txt",
+      "length": 53,
+      "index": 25
+    },
+    {
+      "filename": "message_0026.txt",
+      "length": 54,
+      "index": 26
+    },
+    {
+      "filename": "message_0027.txt",
+      "length": 54,
+      "index": 27
+    },
+    {
+      "filename": "message_0028.txt",
+      "length": 66,
+      "index": 28
+    },
+    {
+      "filename": "message_0029.txt",
+      "length": 43,
+      "index": 29
+    },
+    {
+      "filename": "message_0030.txt",
+      "length": 17,
+      "index": 30
+    },
+    {
+      "filename": "message_0031.txt",
+      "length": 73,
+      "index": 31
+    },
+    {
+      "filename": "message_0032.txt",
+      "length": 122,
+      "index": 32
+    },
+    {
+      "filename": "message_0033.txt",
+      "length": 38,
+      "index": 33
+    },
+    {
+      "filename": "message_0034.txt",
+      "length": 25,
+      "index": 34
+    },
+    {
+      "filename": "message_0035.txt",
+      "length": 53,
+      "index": 35
+    },
+    {
+      "filename": "message_0036.txt",
+      "length": 54,
+      "index": 36
+    },
+    {
+      "filename": "message_0037.txt",
+      "length": 54,
+      "index": 37
+    },
+    {
+      "filename": "message_0038.txt",
+      "length": 66,
+      "index": 38
+    },
+    {
+      "filename": "message_0039.txt",
+      "length": 43,
+      "index": 39
+    },
+    {
+      "filename": "message_0040.txt",
+      "length": 17,
+      "index": 40
+    },
+    {
+      "filename": "message_0041.txt",
+      "length": 73,
+      "index": 41
+    },
+    {
+      "filename": "message_0042.txt",
+      "length": 122,
+      "index": 42
+    },
+    {
+      "filename": "message_0043.txt",
+      "length": 38,
+      "index": 43
+    },
+    {
+      "filename": "message_0044.txt",
+      "length": 25,
+      "index": 44
+    },
+    {
+      "filename": "message_0045.txt",
+      "length": 53,
+      "index": 45
+    },
+    {
+      "filename": "message_0046.txt",
+      "length": 54,
+      "index": 46
+    },
+    {
+      "filename": "message_0047.txt",
+      "length": 54,
+      "index": 47
+    },
+    {
+      "filename": "message_0048.txt",
+      "length": 66,
+      "index": 48
+    },
+    {
+      "filename": "message_0049.txt",
+      "length": 43,
+      "index": 49
+    }
+  ]
+}
